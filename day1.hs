@@ -1,0 +1,3 @@
+main = calCount
+
+calCount :: IO ()
