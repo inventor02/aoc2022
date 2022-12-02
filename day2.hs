@@ -72,19 +72,13 @@ score' (m, o) = score (m, p)
 finalScore :: String -> IO Int
 finalScore file = do  contents <- readFile file
                       let rounds = map (parse) $ filter (\l -> l /= "") $ lines contents
-                      print $ (show $ length rounds) ++ " rounds"
                       let scores = map (score) rounds
-                      print $ (show $ length scores) ++ " scores"
-                      print $ zip rounds scores
                       let total = sum scores
                       return total
 
 finalScore' :: String -> IO Int
 finalScore' file = do contents <- readFile file
                       let rounds = map (parse') $ filter (\l -> l /= "") $ lines contents
-                      print $ (show $ length rounds) ++ " rounds"
                       let scores = map (score') rounds
-                      print $ (show $ length scores) ++ " scores"
-                      print $ zip rounds scores
                       let total = sum scores
                       return total
