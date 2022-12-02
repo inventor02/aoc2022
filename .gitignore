@@ -1,3 +1,5 @@
 *
 !*.hs
 !.gitignore
+!README.md
+!LICENSE
