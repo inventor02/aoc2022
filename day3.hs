@@ -8,6 +8,7 @@ priority c | code >= 65 && code <= 90 = code - 65 + 26 + 1
            | otherwise = error "invalid char"
   where code = ord c
 
+-- compare two tuples for priority
 priorityCompare :: (Char, Int) -> (Char, Int) -> Ordering
 priorityCompare (_, p1) (_, p2) = compare p1 p2
 
@@ -40,6 +41,8 @@ sumOfPriorities fileName = do contents <- readFile fileName
                               let total = sum $ map snd priorities
                               return total
 
+-- part 2
+-- group the elves into threes and then find the common item in the group, then find the priorities and sum
 sumOfBadgePriorities :: String -> IO Int
 sumOfBadgePriorities fileName = do  contents <- readFile fileName
                                     let ls = filter (/= "") $ lines contents
