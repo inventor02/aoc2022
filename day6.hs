@@ -21,6 +21,7 @@ firstUniqueBy f (a:as) | length a' == length (nub a') = Just a
 firstUniqueFromBuf :: Int -> String -> Maybe (Int, String)
 firstUniqueFromBuf n xs = firstUniqueBy (snd) $ charsets n xs
 
+-- get the first unique string given a certain length
 firstLengthUnique :: Int -> String -> IO (Maybe (Int, String))
 firstLengthUnique n fileName = do
   cs <- readFile fileName
@@ -28,3 +29,15 @@ firstLengthUnique n fileName = do
   let l = head ls
   let fu = firstUniqueFromBuf n l
   return fu -- >:)
+
+-- main method because why not
+main :: IO ()
+main = do
+  putStrLn "Enter the length of the buffer"
+  n' <- getLine
+  let n = read n' :: Int
+  putStrLn "Enter the name of the file you want to check"
+  f <- getLine
+  fu <- firstLengthUnique n f
+  print fu
+  return ()
